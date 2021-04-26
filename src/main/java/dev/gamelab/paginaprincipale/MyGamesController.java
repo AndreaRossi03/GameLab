@@ -16,9 +16,21 @@ public class MyGamesController {
     private AnchorPane display;
 
     @FXML
-    private void play_game(ActionEvent event) {
+    private void campoMinato() {
         try {
             display = FXMLLoader.load(getClass().getResource("/scene/CampoMinato.fxml"));
+            game_display.getChildren().clear();
+            game_display.getChildren().setAll(display);
+            game_display.autosize();
+        } catch (IOException ex) {
+            Logger.getLogger(PaginaPrincipaleController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    @FXML
+    private void tris() {
+        try {
+            display = FXMLLoader.load(getClass().getResource("/scene/Tris.fxml"));
             game_display.getChildren().clear();
             game_display.getChildren().setAll(display);
             game_display.autosize();

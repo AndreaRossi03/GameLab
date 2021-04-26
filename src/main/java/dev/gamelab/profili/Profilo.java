@@ -2,7 +2,9 @@ package dev.gamelab.profili;
 
 import org.apache.commons.codec.digest.DigestUtils;
 
-import java.util.*;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Questa classe rappresenta il profilo dell'utente che sta attualmente usando l'applicazione

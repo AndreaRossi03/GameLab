@@ -1,7 +1,5 @@
 package dev.gamelab.giochi.tris;
 
-import javax.imageio.ImageIO;
-
 public class Tris {
 
     public enum Cella {

@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="pannello" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="580.0" prefWidth="864.0" styleClass="primaryLightBackground" stylesheets="@Stile.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dev.gamelab.giochi.campominato.CampoMinatoController">
+<AnchorPane fx:id="pannello" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="580.0" prefWidth="864.0" styleClass="primaryLightBackground" stylesheets="@Stile.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dev.gamelab.giochi.tris.TrisController">
    <HBox alignment="CENTER" layoutX="131.0" layoutY="103.0" prefHeight="580.0" prefWidth="864.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
       <children>
          <Canvas fx:id="canvas" height="525.0" onMouseClicked="#canvasCliccato" width="525.0">

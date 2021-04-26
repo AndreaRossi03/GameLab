@@ -1,6 +1,7 @@
 package dev.gamelab.giochi.campominato;
 
 import dev.gamelab.GameLab;
+import dev.gamelab.giochi.Immagini;
 import dev.gamelab.giochi.Stato;
 import dev.gamelab.profili.Profilo;
 import dev.gamelab.profili.Salvataggio;
@@ -28,9 +29,6 @@ public class CampoMinatoController {
 
     @FXML
     private Canvas canvas;
-
-    @FXML
-    private VBox controlli;
 
     @FXML
     private Label cronometro;

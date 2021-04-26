@@ -1,7 +1,7 @@
 package dev.gamelab;
 
-import dev.gamelab.profili.GestoreProfili;
 import dev.gamelab.paginainiziale.PaginaInizialeController;
+import dev.gamelab.profili.GestoreProfili;
 import dev.gamelab.profili.Profilo;
 import dev.gamelab.util.Utilita;
 import javafx.application.Application;

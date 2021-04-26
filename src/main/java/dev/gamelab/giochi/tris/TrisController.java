@@ -1,16 +1,16 @@
 package dev.gamelab.giochi.tris;
 
 import com.jfoenix.controls.JFXButton;
+import dev.gamelab.giochi.Immagini;
 import dev.gamelab.giochi.Stato;
-import dev.gamelab.giochi.campominato.Cella;
-import javafx.embed.swing.SwingFXUtils;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
-import javafx.scene.control.Button;
+import javafx.scene.image.Image;
 import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
-import javafx.stage.Stage;
+import javafx.scene.paint.Color;
 
 public class TrisController {
 
@@ -30,17 +30,18 @@ public class TrisController {
     private Stato stato;
     private GraphicsContext context;
 
+    private double moltiplicatoreX;
+    private double moltiplicatoreY;
+
     @FXML
     private void initialize() {
         stato = Stato.INIZIANDO;
         context = canvas.getGraphicsContext2D();
         tris = new Tris();
-    }
+        disegnaGriglia();
 
-    private void aggiornaCella(Tris.Cella cella, int x, int y) {
-        tris.getCelle()[x][y] = cella;
-
-        double newX = canvas.getWidth() / x;
+        moltiplicatoreY = canvas.getHeight() / 3;
+        moltiplicatoreX = canvas.getWidth() / 3;
     }
 
     @FXML
@@ -49,15 +50,54 @@ public class TrisController {
             stato = Stato.GIOCANDO;
         }
 
+        int colonna = (int) (event.getX() / moltiplicatoreX);
+        int riga = (int) (event.getY() / moltiplicatoreY);
         MouseButton bottone = event.getButton();
+
+        Tris.Cella[][] celle = tris.getCelle();
 
         switch (bottone) {
             case PRIMARY:
-                // METTI CELLA
+                if (celle[colonna][riga] != Tris.Cella.VUOTO) {
+                    return;
+                }
+
+                disegnaElemento(Tris.Cella.CERCHIO, colonna, riga);
                 break;
             case SECONDARY:
-                // RIMUOVI CELLA
+                disegnaElemento(Tris.Cella.VUOTO, colonna, riga);
                 break;
         }
+    }
+
+    public void disegnaGriglia() {
+        context.setLineWidth(3);
+        context.setStroke(Color.BLACK);
+        context.strokeLine(canvas.getWidth() / 3, 0, canvas.getWidth() / 3, canvas.getHeight());
+        context.strokeLine(canvas.getWidth() * 2 / 3, 0, canvas.getWidth() * 2 / 3, canvas.getHeight());
+        context.strokeLine(0, canvas.getHeight() / 3, canvas.getWidth(), canvas.getHeight() / 3);
+        context.strokeLine(0, canvas.getHeight() * 2 / 3, canvas.getWidth(), canvas.getHeight() * 2 / 3);
+    }
+
+    public void disegnaElemento(Tris.Cella tipo, int x, int y) {
+        Image immagine = null;
+
+        switch (tipo) {
+            case CROCE:
+                immagine = Immagini.CROCE;
+                break;
+            case CERCHIO:
+                immagine = Immagini.CERCHIO;
+                break;
+        }
+
+        if (immagine != null) {
+            context.drawImage(immagine, x * moltiplicatoreX, y * moltiplicatoreY, moltiplicatoreX, moltiplicatoreY);
+        } else {
+            context.clearRect(x * moltiplicatoreX + 10, y * moltiplicatoreY + 10, moltiplicatoreX - 20, moltiplicatoreY - 20);
+        }
+    }
+
+    public void riprova(ActionEvent event) {
     }
 }

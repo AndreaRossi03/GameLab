@@ -3,9 +3,6 @@ package dev.gamelab.paginaprincipale;
 import com.jfoenix.controls.JFXCheckBox;
 import dev.gamelab.GameLab;
 import dev.gamelab.profili.Impostazioni;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 
 public class ImpostazioniController {

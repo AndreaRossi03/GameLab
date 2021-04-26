@@ -1,10 +1,7 @@
 package dev.gamelab.util;
 
-import com.jfoenix.controls.JFXPasswordField;
-import com.jfoenix.controls.JFXTextField;
 import dev.gamelab.GameLab;
 import javafx.scene.Parent;
-import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.media.AudioClip;
 import javafx.stage.Stage;

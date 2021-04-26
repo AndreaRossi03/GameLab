@@ -28,7 +28,7 @@
                   <Reflection />
                </effect>
                <children>
-                  <JFXButton buttonType="RAISED" layoutX="28.0" layoutY="154.0" onAction="#play_game" prefHeight="30.0" prefWidth="120.0" ripplerFill="WHITE" styleClass="play-button" text="Gioca!" textFill="#ffeeee">
+                  <JFXButton buttonType="RAISED" layoutX="28.0" layoutY="154.0" onAction="#campoMinato" prefHeight="30.0" prefWidth="120.0" ripplerFill="WHITE" styleClass="play-button" text="Gioca!" textFill="#ffeeee">
                      <font>
                         <Font name="Calibri Bold" size="14.0" />
                      </font>
@@ -48,7 +48,7 @@
                   <Reflection />
                </effect>
                <children>
-                  <JFXButton buttonType="RAISED" layoutX="28.0" layoutY="154.0" prefHeight="30.0" prefWidth="120.0" ripplerFill="WHITE" styleClass="play-button" text="Gioca!" textFill="#ffeeee">
+                  <JFXButton buttonType="RAISED" layoutX="28.0" layoutY="154.0" onAction="#tris" prefHeight="30.0" prefWidth="120.0" ripplerFill="WHITE" styleClass="play-button" text="Gioca!" textFill="#ffeeee">
                      <font>
                         <Font name="Calibri Bold" size="14.0" />
                      </font>
