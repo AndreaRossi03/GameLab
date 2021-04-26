@@ -1,0 +1,215 @@
+* {
+    -fx-primary : #212330;
+    -fx-secondary : linear-gradient(to right, #26D0CE, #1A2980);
+    -fx-ternary: #191B27;
+    -fx-primarytext : white;
+    -fx-blue: blue;
+    -fx-red: red;
+    -fx-color-1: white;
+    -fx-text-fill: white;
+}
+
+.primaryDarkBackground{
+    -fx-background-color: -fx-ternary;
+}
+
+.primaryLightBackground{
+    -fx-background-color: -fx-primary;
+}
+
+.hbox {
+    -fx-border-color: -fx-secondary -fx-secondary transparent -fx-secondary;
+    -fx-border-radius: 40px 40px 0px 0px;
+}
+
+/* REGISTRAZIONE */
+
+.jfx-decorator {
+    -fx-decorator-color: -fx-primary;
+}
+
+.jfx-decorator .jfx-decorator-buttons-container {
+    -fx-background-color: -fx-decorator-color;
+}
+
+.jfx-decorator .resize-border {
+    -fx-border-color: -fx-decorator-color;
+    -fx-border-width: 0px;
+}
+
+.login-text-field {
+    -fx-prompt-text-fill: rgba(255, 255, 255, 0.5);
+    -fx-text-inner-color: white;
+    -fx-font-size : 12pt;
+}
+
+.login-button {
+    -fx-border-color: -fx-secondary;
+    -fx-border-radius: 40px;
+    -fx-background-radius: 40px;
+    -fx-background-color: rgba(0, 0, 0, 0.1);
+    -fx-highlight-fill: -fx-accent;
+    -fx-highlight-text-fill: white;
+}
+
+.login-button:hover {
+    -fx-border-color: -fx-secondary;
+    -fx-border-radius: 40%;
+    -fx-background-color: -fx-secondary;
+}
+
+.hyperlink {
+    -fx-text-fill: rgba(255, 255, 255, 0.7);
+}
+
+.hyperlink:hover {
+    -fx-text-fill: -fx-secondary;
+}
+
+/* IMPOSTAZIONI */
+
+.checkbox-primary {
+    -fx-text-fill: white;
+    -jfx-checked-color: -fx-ternary;
+    -fx-font-size: 13pt;
+}
+
+.closeButton {
+    -fx-background-color: transparent;
+}
+
+.closeButton:hover {
+    -fx-background-color: #DD5145;
+}
+
+.bottomBar {
+    -fx-background-color: -fx-secondary;
+}
+
+.iconButtons {
+    -fx-background-color:transparent;
+}
+
+.iconButtons:hover {
+    -fx-border-color:#ABBDED;
+    -fx-border-width: 0px 0px 3px 0px;
+}
+
+.bar {
+    -fx-background-color: -fx-secondary;
+}
+
+.bar2 {
+    -fx-background-color: linear-gradient(to left, #26D0CE, #1A2980);
+}
+
+.title {
+    -fx-border-color: linear-gradient(to left, #26D0CE, #1A2980);
+    -fx-border-width:0px 0px 1px 0px;
+    -fx-border-style:solid;
+    
+}
+
+.play-button {
+    -fx-background-color: linear-gradient(to right, #26D0CE, #1A2980);
+    -fx-background-radius:30px;
+}
+
+.search-box {
+    -fx-background-color: #191B27;
+    -fx-background-radius: 30px;
+}
+
+.root {
+    -fx-background-color: -fx-primary;
+}
+
+.glyph-icon {
+    -fx-fill: -fx-primarytext;
+}
+
+.settings-tab{
+    -fx-background-color: derive(-fx-primary, 10%);
+    -fx-padding: 5px 20px 5px 20px;
+}
+
+.settings-tab:selected{
+    -fx-background-color: -fx-secondary;
+}
+
+.settings-tab:selected .tab-label{
+    -fx-text-fill: -fx-primary;
+}
+
+.settings-tab .tab-header-background{
+    -fx-background-color: derive(-fx-primary, -50%);
+}
+
+/*Menu bar Styling*/
+.menu-bar{
+    -fx-font-size: 14;
+    -fx-base : -fx-primary;
+    -fx-background-color: -fx-primary;
+}
+
+.context-menu {
+    -fx-background-color:  derive(-fx-primary, 20%);
+    -fx-font-size: 14;
+    -fx-min-width: 150px;
+}
+
+/*Text styling*/
+.main-text
+{
+    -fx-fill: -fx-secondary;
+    -fx-font-size: 14pt;
+    -fx-text-alignment: center;
+}
+
+.submission-container{
+    -fx-background-color: derive(-fx-primary, 10%);
+}
+
+/*JFXDialog styling*/
+.jfx-layout-heading
+{
+    -fx-background-color: -fx-color-1;
+}
+.jfx-layout-heading .label
+{
+    -fx-text-fill: white;
+    -fx-font-size: 12pt;
+}
+.jfx-layout-body, .jfx-layout-actions{
+    -fx-background-color: -fx-primary;
+}
+.jfx-layout-body .label
+{
+    -fx-text-fill: white;
+    -fx-padding: 20px 0 0 0;
+}
+
+
+/*Dashboard label*/
+.not-available
+{
+    -fx-background-radius: 5px;
+    -fx-fill: derive(blue, 80%);
+    -fx-cursor: hand;
+}
+
+/*Progrss bar*/
+
+.progress-bar-main .track{
+    -fx-background-color: -fx-primary;
+}
+.progress-bar-main .bar{
+    -fx-background-color: -fx-secondary;
+    -fx-padding: 5px;
+}
+
+.common-label{
+    -fx-background-color: transparent;
+    -fx-text-fill: -fx-secondary;
+    -fx-font-size: 12pt;
+}

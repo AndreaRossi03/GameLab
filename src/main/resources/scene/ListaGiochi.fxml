@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.geometry.Insets?>
+<?import javafx.geometry.Point3D?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.effect.Reflection?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" fx:id="game_display" prefHeight="464.0" prefWidth="688.0" styleClass="primaryLightBackground" stylesheets="@Stile.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dev.gamelab.paginaprincipale.MyGamesController">
+   <children>
+      <Label layoutX="14.0" layoutY="14.0" styleClass="title" text="I miei giochi" textFill="#afb2af">
+         <font>
+            <Font name="Berlin Sans FB" size="18.0" />
+         </font>
+         <padding>
+            <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+         </padding>
+      </Label>
+      <HBox layoutX="14.0" layoutY="56.0" AnchorPane.bottomAnchor="195.0" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="65.0">
+         <children>
+            <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="195.0" prefWidth="175.0" styleClass="primaryDarkBackground">
+               <effect>
+                  <Reflection />
+               </effect>
+               <children>
+                  <JFXButton buttonType="RAISED" layoutX="28.0" layoutY="154.0" onAction="#play_game" prefHeight="30.0" prefWidth="120.0" ripplerFill="WHITE" styleClass="play-button" text="Gioca!" textFill="#ffeeee">
+                     <font>
+                        <Font name="Calibri Bold" size="14.0" />
+                     </font>
+                  </JFXButton>
+                  <ImageView fitHeight="110.0" fitWidth="107.0" layoutX="34.0" layoutY="20.0">
+                     <image>
+                        <Image url="@../immagini/giochi/campo_minato_logo.png" />
+                     </image>
+                  </ImageView>
+               </children>
+               <rotationAxis>
+                  <Point3D />
+               </rotationAxis>
+            </AnchorPane>
+            <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="195.0" prefWidth="175.0" styleClass="primaryDarkBackground">
+               <effect>
+                  <Reflection />
+               </effect>
+               <children>
+                  <JFXButton buttonType="RAISED" layoutX="28.0" layoutY="154.0" prefHeight="30.0" prefWidth="120.0" ripplerFill="WHITE" styleClass="play-button" text="Gioca!" textFill="#ffeeee">
+                     <font>
+                        <Font name="Calibri Bold" size="14.0" />
+                     </font>
+                  </JFXButton>
+                  <ImageView fitHeight="116.0" fitWidth="120.0" layoutX="28.0" layoutY="21.0">
+                     <image>
+                        <Image url="@../immagini/giochi/tris_logo.png" />
+                     </image>
+                  </ImageView>
+               </children>
+               <HBox.margin>
+                  <Insets left="30.0" />
+               </HBox.margin>
+            </AnchorPane>
+            <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="195.0" prefWidth="175.0" styleClass="primaryDarkBackground">
+               <effect>
+                  <Reflection />
+               </effect>
+               <children>
+                  <JFXButton buttonType="RAISED" layoutX="28.0" layoutY="151.0" prefHeight="30.0" prefWidth="120.0" ripplerFill="WHITE" styleClass="play-button" text="Gioca!" textFill="#ffeeee">
+                     <font>
+                        <Font name="Calibri Bold" size="14.0" />
+                     </font>
+                  </JFXButton>
+                  <ImageView fitHeight="116.0" fitWidth="139.0" layoutX="18.0" layoutY="22.0">
+                     <image>
+                        <Image url="@../immagini/giochi/memory_game_logo.png" />
+                     </image>
+                  </ImageView>
+               </children>
+               <HBox.margin>
+                  <Insets left="30.0" />
+               </HBox.margin>
+            </AnchorPane>
+         </children>
+      </HBox>
+   </children>
+</AnchorPane>

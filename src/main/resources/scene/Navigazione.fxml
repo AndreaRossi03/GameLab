@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<VBox id="VBox" alignment="CENTER" prefHeight="400.0" prefWidth="150.0" styleClass="primaryDarkBackground" stylesheets="@Stile.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dev.gamelab.paginaprincipale.SidebarController">
+   <children>
+      <VBox id="MG" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#mouseClicca" onMouseEntered="#mouseSopra" onMouseExited="#mouseRilascia" prefHeight="145.0" prefWidth="145.0" styleClass="primaryDarkBackground">
+         <children>
+            <ImageView fitHeight="65.0" fitWidth="65.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../immagini/mygames.png" />
+               </image>
+            </ImageView>
+            <Label text="I MIEI GIOCHI" textFill="#afb2af">
+               <font>
+                  <Font name="Berlin Sans FB" size="14.0" />
+               </font>
+            </Label>
+         </children>
+      </VBox>
+      <VBox id="GL" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#mouseClicca" onMouseEntered="#mouseSopra" onMouseExited="#mouseRilascia" prefHeight="145.0" prefWidth="145.0" styleClass="primaryDarkBackground">
+         <children>
+            <ImageView fitHeight="65.0" fitWidth="65.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../immagini/impostazioni_icona.png" />
+               </image>
+            </ImageView>
+            <Label text="IMPOSTAZIONI" textFill="#afb2af">
+               <font>
+                  <Font name="Berlin Sans FB" size="14.0" />
+               </font>
+            </Label>
+         </children>
+      </VBox>
+   </children>
+</VBox>

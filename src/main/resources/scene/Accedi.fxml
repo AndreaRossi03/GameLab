@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXPasswordField?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<VBox prefHeight="166.0" prefWidth="233.0" styleClass="primaryLightBackground" stylesheets="@Stile.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dev.gamelab.paginainiziale.AccediController">
+   <children>
+      <JFXTextField fx:id="email" prefHeight="43.0" prefWidth="136.0" promptText="Inserisci la tua email" styleClass="login-text-field" unFocusColor="#4d4d4d" />
+      <JFXPasswordField fx:id="password" prefHeight="44.0" prefWidth="233.0" promptText="Inserisci la password" styleClass="login-text-field">
+         <VBox.margin>
+            <Insets top="5.0" />
+         </VBox.margin>
+      </JFXPasswordField>
+      <JFXButton fx:id="accedi" onAction="#accedi" prefHeight="43.0" prefWidth="233.0" styleClass="login-button" stylesheets="@Stile.css" text="Accedi" textFill="WHITE">
+         <font>
+            <Font size="17.0" />
+         </font>
+         <VBox.margin>
+            <Insets top="30.0" />
+         </VBox.margin>
+      </JFXButton>
+   </children>
+</VBox>

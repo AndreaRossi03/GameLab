@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXDrawer?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" fx:id="parent" prefHeight="680.0" prefWidth="1024.0" styleClass="primaryLightBackground" stylesheets="@Stile.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dev.gamelab.paginaprincipale.PaginaPrincipaleController">
+   <children>
+      <AnchorPane fx:id="barra" prefHeight="50.0" prefWidth="1024.0" styleClass="primaryDarkBackground" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="16.0" layoutY="11.0" onMouseClicked="#open_menu" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="15.0">
+               <image>
+                  <Image url="@../immagini/navigazione/navigazione.png" />
+               </image>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </ImageView>
+            <HBox layoutX="868.0" layoutY="13.0" AnchorPane.rightAnchor="15.0">
+               <children>
+                  <VBox id="closeBtn" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#schermoIntero" prefHeight="25.0" prefWidth="25.0">
+                     <children>
+                        <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../immagini/navigazione/schermo_intero.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                     <HBox.margin>
+                        <Insets right="25.0" />
+                     </HBox.margin>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </VBox>
+                  <VBox id="closeBtn" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#minimizza" prefHeight="25.0" prefWidth="25.0" styleClass="closeButton">
+                     <children>
+                        <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../immagini/navigazione/minimizza.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </VBox>
+                  <VBox id="closeBtn" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#massimizza" prefHeight="25.0" prefWidth="25.0" styleClass="closeButton">
+                     <children>
+                        <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../immagini/navigazione/massimizza.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </VBox>
+                  <VBox id="closeBtn" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#chiudi" prefHeight="25.0" prefWidth="25.0" styleClass="closeButton">
+                     <children>
+                        <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../immagini/navigazione/chiudi.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </VBox>
+               </children>
+            </HBox>
+            <Pane prefHeight="3.0" prefWidth="200.0" styleClass="bar" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+         </children>
+      </AnchorPane>
+      <JFXDrawer fx:id="menu" defaultDrawerSize="150.0" layoutX="-8.0" layoutY="50.0" prefHeight="580.0" prefWidth="166.0" resizableOnDrag="true" />
+      <AnchorPane layoutY="630.0" prefHeight="50.0" prefWidth="200.0" styleClass="primaryDarkBackground" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+         <children>
+            <Label fx:id="nomeLabel" layoutX="60.0" layoutY="15.0" text="Persona" textFill="#afb2af">
+               <font>
+                  <Font name="Berlin Sans FB" size="14.0" />
+               </font>
+            </Label>
+            <Pane layoutX="143.0" layoutY="23.0" prefHeight="3.0" prefWidth="200.0" styleClass="bar2" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
+            <ImageView fitHeight="30.0" fitWidth="30.0" layoutX="21.0" layoutY="9.0">
+               <image>
+                  <Image url="@../immagini/persona_icona.png" />
+               </image>
+            </ImageView>
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="content" layoutX="158.0" layoutY="50.0" prefHeight="580.0" prefWidth="867.0" />
+   </children>
+</AnchorPane>
