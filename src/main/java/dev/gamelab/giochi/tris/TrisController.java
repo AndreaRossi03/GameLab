@@ -46,14 +46,14 @@ public class TrisController {
         tris = new Tris();
         disegnaGriglia();
         
-        cerchio.onActionListener((event) -> {
+        cerchio.setOnAction(event -> {
             if (turno == null) {
                 turno = Turno.CERCHIO;
             }
         });
         
         
-        croce.onActionListener((event) -> {
+        croce.setOnAction(event -> {
             if (turno == null) {
                 turno = Turno.CROCE;
             }
