@@ -28,10 +28,16 @@ public class TrisController {
 
     private Tris tris;
     private Stato stato;
+    private Turno turno;
     private GraphicsContext context;
 
     private double moltiplicatoreX;
     private double moltiplicatoreY;
+    
+    private enum Turno {
+        CERCHIO,
+        CROCE
+    }
 
     @FXML
     private void initialize() {
@@ -39,7 +45,20 @@ public class TrisController {
         context = canvas.getGraphicsContext2D();
         tris = new Tris();
         disegnaGriglia();
-
+        
+        cerchio.onActionListener((event) -> {
+            if (turno == null) {
+                turno = Turno.CERCHIO;
+            }
+        });
+        
+        
+        croce.onActionListener((event) -> {
+            if (turno == null) {
+                turno = Turno.CROCE;
+            }
+        });
+        
         moltiplicatoreY = canvas.getHeight() / 3;
         moltiplicatoreX = canvas.getWidth() / 3;
     }
@@ -54,18 +73,20 @@ public class TrisController {
         int riga = (int) (event.getY() / moltiplicatoreY);
         MouseButton bottone = event.getButton();
 
-        Tris.Cella[][] celle = tris.getCelle();
+        Cella cella = tris.getCelle()[colonna][riga];
 
         switch (bottone) {
             case PRIMARY:
-                if (celle[colonna][riga] != Tris.Cella.VUOTO) {
-                    return;
+                if (celle[colonna][riga] == Tris.Cella.VUOTO) {
+                    cella = turno == CERCHIO ? Tris.Cella.CERCHIO : Tris.Cella.CROCE
+                    disegnaElemento(cella, colonna, riga);
+                    turno = cella == Tris.Cella.CERCHIO ? Turno.CERCHIO : Turno.CROCE;                
                 }
-
-                disegnaElemento(Tris.Cella.CERCHIO, colonna, riga);
                 break;
             case SECONDARY:
-                disegnaElemento(Tris.Cella.VUOTO, colonna, riga);
+                if (cella != Tris.Cella.VUOTO) {
+                    disegnaElemento(Tris.Cella.VUOTO, colonna, riga);
+                }
                 break;
         }
     }
