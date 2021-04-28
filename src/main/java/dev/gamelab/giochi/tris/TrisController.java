@@ -1,64 +1,44 @@
 package dev.gamelab.giochi.tris;
 
-import com.jfoenix.controls.JFXButton;
+import dev.gamelab.GameLab;
 import dev.gamelab.giochi.Immagini;
 import dev.gamelab.giochi.Stato;
-import javafx.event.ActionEvent;
+import dev.gamelab.profili.Profilo;
+import dev.gamelab.profili.Salvataggio;
 import javafx.fxml.FXML;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.control.Label;
+import javafx.scene.effect.GaussianBlur;
 import javafx.scene.image.Image;
 import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
+import javafx.scene.text.FontWeight;
+import javafx.scene.text.TextAlignment;
+import javafx.util.Pair;
 
 public class TrisController {
 
     @FXML
     private Canvas canvas;
 
-    @FXML
-    private JFXButton riprova;
-
-    @FXML
-    private JFXButton croce;
-
-    @FXML
-    private JFXButton cerchio;
-
     private Tris tris;
     private Stato stato;
-    private Turno turno;
     private GraphicsContext context;
 
     private double moltiplicatoreX;
     private double moltiplicatoreY;
-    
-    private enum Turno {
-        CERCHIO,
-        CROCE
-    }
 
     @FXML
     private void initialize() {
         stato = Stato.INIZIANDO;
         context = canvas.getGraphicsContext2D();
         tris = new Tris();
+        context.clearRect(0, 0, canvas.getWidth(), canvas.getHeight());
         disegnaGriglia();
-        
-        cerchio.setOnAction(event -> {
-            if (turno == null) {
-                turno = Turno.CERCHIO;
-            }
-        });
-        
-        
-        croce.setOnAction(event -> {
-            if (turno == null) {
-                turno = Turno.CROCE;
-            }
-        });
-        
+
         moltiplicatoreY = canvas.getHeight() / 3;
         moltiplicatoreX = canvas.getWidth() / 3;
     }
@@ -69,31 +49,104 @@ public class TrisController {
             stato = Stato.GIOCANDO;
         }
 
+        if (stato != Stato.GIOCANDO) {
+            return;
+        }
+
         int colonna = (int) (event.getX() / moltiplicatoreX);
         int riga = (int) (event.getY() / moltiplicatoreY);
         MouseButton bottone = event.getButton();
 
-        Cella cella = tris.getCelle()[colonna][riga];
+        Tris.Cella cella = tris.getCelle()[colonna][riga];
 
-        switch (bottone) {
-            case PRIMARY:
-                if (celle[colonna][riga] == Tris.Cella.VUOTO) {
-                    cella = turno == CERCHIO ? Tris.Cella.CERCHIO : Tris.Cella.CROCE
-                    disegnaElemento(cella, colonna, riga);
-                    turno = cella == Tris.Cella.CERCHIO ? Turno.CERCHIO : Turno.CROCE;                
+        if (bottone == MouseButton.PRIMARY) {
+            if (cella == Tris.Cella.VUOTO) {
+                disegnaElemento(Tris.Cella.CROCE, colonna, riga);
+                tris.setCella(Tris.Cella.CROCE, colonna, riga);
+
+
+                int valore = MinimaxAI.valoreMappa(tris.getCelle());
+
+                if (valore == 0) {
+                    Pair<Integer, Integer> posizioneMigliore = MinimaxAI.trovaPosizioneMigliore(tris.getCelle());
+                    disegnaElemento(Tris.Cella.CERCHIO, posizioneMigliore.getKey(), posizioneMigliore.getValue());
+
+                    try {
+                        tris.setCella(Tris.Cella.CERCHIO, posizioneMigliore.getKey(), posizioneMigliore.getValue());
+                    } catch (ArrayIndexOutOfBoundsException e) {
+                        stato = Stato.PARI;
+                    }
+
+                    valore = MinimaxAI.valoreMappa(tris.getCelle());
                 }
-                break;
-            case SECONDARY:
-                if (cella != Tris.Cella.VUOTO) {
-                    disegnaElemento(Tris.Cella.VUOTO, colonna, riga);
+
+                if (valore == 10) {
+                    stato = Stato.VINTO;
+                } else if (valore == -10) {
+                    stato = Stato.PERSO;
                 }
-                break;
+            }
+        }
+
+        giocoFinito();
+    }
+
+    @FXML
+    private void riprova() {
+        initialize();
+    }
+
+    private void giocoFinito() {
+        if (stato == Stato.GIOCANDO || stato == Stato.INIZIANDO) {
+            return;
+        }
+
+        context.setFill(Color.TRANSPARENT);
+        context.setEffect(new GaussianBlur());
+        disegnaMappa();
+
+        context.setEffect(null);
+        context.setTextAlign(TextAlignment.CENTER);
+        context.setFont(Font.font(Font.getDefault().getName(), FontWeight.BOLD, 60));
+
+        Profilo profilo = GameLab.getInstance().getProfiloSessione();
+
+        if (!profilo.getSalvataggi().containsKey("tris")) {
+            profilo.aggiungiSalvataggio("tris", new Salvataggio());
+        }
+
+        Salvataggio salvataggio = profilo.getSalvataggio("tris");
+
+        if (stato == Stato.PARI) {
+            context.setFill(Color.LIGHTGRAY);
+            context.fillText("HAI PAREGGIATO!", canvas.getWidth() / 2, canvas.getHeight() / 2);
+            salvataggio.aumentaValore("partite_pari");
+        }
+
+        if (stato == Stato.VINTO) {
+            context.setFill(Color.LIGHTGREEN);
+            context.fillText("HAI VINTO!", canvas.getWidth() / 2, canvas.getHeight() / 2);
+            salvataggio.aumentaValore("partite_vinte");
+        }
+
+        if (stato == Stato.PERSO) {
+            context.setFill(Color.RED);
+            context.fillText("HAI PERSO!", canvas.getWidth() / 2, canvas.getHeight() / 2);
+            salvataggio.aumentaValore("partite_perse");
         }
     }
 
-    public void disegnaGriglia() {
+    private void disegnaMappa() {
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < 3; j++) {
+                disegnaElemento(tris.getCelle()[i][j], i, j);
+            }
+        }
+    }
+
+    private void disegnaGriglia() {
         context.setLineWidth(3);
-        context.setStroke(Color.BLACK);
+        context.setStroke(Color.WHITE);
         context.strokeLine(canvas.getWidth() / 3, 0, canvas.getWidth() / 3, canvas.getHeight());
         context.strokeLine(canvas.getWidth() * 2 / 3, 0, canvas.getWidth() * 2 / 3, canvas.getHeight());
         context.strokeLine(0, canvas.getHeight() / 3, canvas.getWidth(), canvas.getHeight() / 3);
@@ -117,8 +170,5 @@ public class TrisController {
         } else {
             context.clearRect(x * moltiplicatoreX + 10, y * moltiplicatoreY + 10, moltiplicatoreX - 20, moltiplicatoreY - 20);
         }
-    }
-
-    public void riprova(ActionEvent event) {
     }
 }

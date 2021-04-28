@@ -107,50 +107,6 @@ public class CampoMinatoController {
         initialize();
     }
 
-    private void disegnaCampo() {
-        for (int x = 0; x < campoMinato.getColonne(); x++) {
-            for (int y = 0; y < campoMinato.getRighe(); y++) {
-                disegnaCella(campoMinato.getCelle()[x][y]);
-            }
-        }
-    }
-
-    private void giocoFinito() {
-        if (statoGioco == Stato.GIOCANDO || statoGioco == Stato.INIZIANDO) {
-            return;
-        }
-
-        tempoAnimazione.stop();
-
-        context.setFill(Color.TRANSPARENT);
-        context.setEffect(new GaussianBlur());
-        disegnaCampo();
-
-        context.setEffect(null);
-        context.setTextAlign(TextAlignment.CENTER);
-        context.setFont(Font.font(Font.getDefault().getName(), FontWeight.BOLD, 60));
-
-        Profilo profilo = GameLab.getInstance().getProfiloSessione();
-
-        if (!profilo.getSalvataggi().containsKey("campo_minato")) {
-            profilo.aggiungiSalvataggio("campo_minato", new Salvataggio());
-        }
-
-        Salvataggio salvataggio = profilo.getSalvataggio("campo_minato");
-
-        if (statoGioco == Stato.VINTO) {
-            context.setFill(Color.LIGHTGREEN);
-            context.fillText("HAI VINTO!", canvas.getWidth() / 2, canvas.getHeight() / 2);
-            salvataggio.aumentaValore("partite_vinte");
-        }
-
-        if (statoGioco == Stato.PERSO) {
-            context.setFill(Color.RED);
-            context.fillText("HAI PERSO!", canvas.getWidth() / 2, canvas.getHeight() / 2);
-            salvataggio.aumentaValore("partite_perse");
-        }
-    }
-
     @FXML
     private void canvasCliccato(MouseEvent event) {
         if (statoGioco == Stato.INIZIANDO) {
@@ -204,11 +160,56 @@ public class CampoMinatoController {
         giocoFinito();
     }
 
-    private void cascata(Cella[][] celle, int x, int y) {
-        if (x < 0 || x >= campoMinato.getColonne() || y < 0 || y >= campoMinato.getRighe()) {
+    private void disegnaCampo() {
+        for (int x = 0; x < campoMinato.getColonne(); x++) {
+            for (int y = 0; y < campoMinato.getRighe(); y++) {
+                disegnaCella(campoMinato.getCelle()[x][y]);
+            }
+        }
+    }
+
+    private void giocoFinito() {
+        if (statoGioco == Stato.GIOCANDO || statoGioco == Stato.INIZIANDO) {
             return;
         }
-        if (celle[x][y].getStato() != Cella.Stato.NON_VISIBILE) {
+
+        tempoAnimazione.stop();
+
+        context.setFill(Color.TRANSPARENT);
+        context.setEffect(new GaussianBlur());
+        disegnaCampo();
+
+        context.setEffect(null);
+        context.setTextAlign(TextAlignment.CENTER);
+        context.setFont(Font.font(Font.getDefault().getName(), FontWeight.BOLD, 60));
+
+        Profilo profilo = GameLab.getInstance().getProfiloSessione();
+
+        if (!profilo.getSalvataggi().containsKey("campo_minato")) {
+            profilo.aggiungiSalvataggio("campo_minato", new Salvataggio());
+        }
+
+        Salvataggio salvataggio = profilo.getSalvataggio("campo_minato");
+
+        if (statoGioco == Stato.VINTO) {
+            context.setFill(Color.LIGHTGREEN);
+            context.fillText("HAI VINTO!", canvas.getWidth() / 2, canvas.getHeight() / 2);
+            salvataggio.aumentaValore("partite_vinte");
+        }
+
+        if (statoGioco == Stato.PERSO) {
+            context.setFill(Color.RED);
+            context.fillText("HAI PERSO!", canvas.getWidth() / 2, canvas.getHeight() / 2);
+            salvataggio.aumentaValore("partite_perse");
+        }
+    }
+
+    private void cascata(Cella[][] celle, int x, int y) {
+        if (
+                   x < 0 || y < 0
+                || x >= campoMinato.getColonne()  || y >= campoMinato.getRighe()
+                || celle[x][y].getStato() != Cella.Stato.NON_VISIBILE
+        ) {
             return;
         }
 
@@ -216,20 +217,15 @@ public class CampoMinatoController {
         disegnaCella(celle[x][y]);
         celleScoperte++;
 
-        if (celle[x][y].getBombeVicine() > 0 ) {
+        if (celle[x][y].getBombeVicine() > 0) {
             return;
         }
 
-        cascata(celle, x - 1, y - 1);
-        cascata(celle, x - 1, y);
-        cascata(celle, x - 1, y + 1);
-
-        cascata(celle, x, y - 1);
-        cascata(celle, x, y + 1);
-
-        cascata(celle, x + 1, y - 1);
-        cascata(celle, x + 1, y);
-        cascata(celle, x + 1, y + 1);
+        for (int i = -1; i < 2; i++) {
+            for (int j = -1; j < 2; j++) {
+                cascata(celle, x + i, y + j);
+            }
+        }
     }
 
     private void disegnaCella(Cella cella) {

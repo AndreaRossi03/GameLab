@@ -26,4 +26,8 @@ public class Tris {
     public Cella[][] getCelle() {
         return celle;
     }
+
+    public void setCella(Cella cella, int x, int y) {
+        celle[x][y] = cella;
+    }
 }

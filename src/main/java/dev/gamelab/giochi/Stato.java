@@ -4,5 +4,6 @@ public enum Stato {
     INIZIANDO,
     GIOCANDO,
     VINTO,
+    PARI,
     PERSO
 }
