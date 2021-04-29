@@ -37,10 +37,6 @@ public class Cella {
         }
     }
 
-    public void alternaBandiera() {
-        alternaBandiera(null, null);
-    }
-
     public Tipo getTipo() {
         return tipo;
     }

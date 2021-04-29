@@ -27,6 +27,7 @@ public class PaginaPrincipaleController {
 
     public static AnchorPane contnt = null;
     private VBox sidebar;
+    private AnchorPane inizioPagina;
     boolean navFlag;
 
     private GameLab gameLab = GameLab.getInstance();
@@ -44,6 +45,7 @@ public class PaginaPrincipaleController {
 
         try {
             sidebar = FXMLLoader.load(getClass().getResource("/scene/Navigazione.fxml"));
+            inizioPagina = FXMLLoader.load(getClass().getResource("/scene/ListaGiochi.fxml"));
         } catch (IOException ex) {
             Logger.getLogger(PaginaPrincipaleController.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -53,6 +55,7 @@ public class PaginaPrincipaleController {
             menu.setPrefHeight(menu.getHeight() + (newValue.floatValue() - oldValue.floatValue()));
         });
         content.getChildren().clear();
+        content.getChildren().setAll(inizioPagina);
         contnt = this.content;
     }
 

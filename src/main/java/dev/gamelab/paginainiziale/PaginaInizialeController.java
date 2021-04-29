@@ -25,12 +25,6 @@ public class PaginaInizialeController {
     private AnchorPane barra;
 
     @FXML
-    private ImageView minimizza;
-
-    @FXML
-    private ImageView chiudi;
-
-    @FXML
     private AnchorPane controlli;
 
     @FXML

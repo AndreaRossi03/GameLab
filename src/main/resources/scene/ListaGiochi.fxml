@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" fx:id="game_display" prefHeight="464.0" prefWidth="688.0" styleClass="primaryLightBackground" stylesheets="@Stile.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dev.gamelab.paginaprincipale.MyGamesController">
+<AnchorPane id="AnchorPane" fx:id="game_display" prefHeight="464.0" prefWidth="688.0" styleClass="primaryLightBackground" stylesheets="@Stile.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dev.gamelab.paginaprincipale.ListaGiochiController">
    <children>
       <Label layoutX="14.0" layoutY="14.0" styleClass="title" text="I miei giochi" textFill="#afb2af">
          <font>
@@ -68,7 +68,7 @@
                   <Reflection />
                </effect>
                <children>
-                  <JFXButton buttonType="RAISED" layoutX="28.0" layoutY="151.0" prefHeight="30.0" prefWidth="120.0" ripplerFill="WHITE" styleClass="play-button" text="Gioca!" textFill="#ffeeee">
+                  <JFXButton buttonType="RAISED" layoutX="28.0" layoutY="151.0" prefHeight="30.0" prefWidth="120.0" ripplerFill="WHITE" styleClass="play-button" text="??" textFill="#ffeeee">
                      <font>
                         <Font name="Calibri Bold" size="14.0" />
                      </font>

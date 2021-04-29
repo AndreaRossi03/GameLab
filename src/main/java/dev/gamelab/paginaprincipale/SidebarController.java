@@ -23,7 +23,7 @@ public class SidebarController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         try {
             mygames = FXMLLoader.load(getClass().getResource("/scene/ListaGiochi.fxml"));
-            impostazioni = FXMLLoader.load(getClass().getResource("/scene/Impostazioni.fxml"));
+            impostazioni = FXMLLoader.load(getClass().getResource("/scene/Profilo.fxml"));
         } catch (IOException ex) {
             Logger.getLogger(PaginaPrincipaleController.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -60,10 +60,10 @@ public class SidebarController implements Initializable {
         sidebarButton = (VBox) event.getSource();
 
         switch (sidebarButton.getId()) {
-            case "MG":
+            case "GL":
                 PaginaPrincipaleController.contnt.getChildren().setAll(mygames);
                 break;
-            case "GL":
+            case "MG":
                 PaginaPrincipaleController.contnt.getChildren().setAll(impostazioni);
                 break;
         }

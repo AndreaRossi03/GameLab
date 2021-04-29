@@ -23,7 +23,7 @@
                <children>
                   <VBox id="closeBtn" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="25.0" prefWidth="25.0" styleClass="closeButton">
                      <children>
-                        <ImageView fx:id="minimizza" fitHeight="20.0" fitWidth="20.0" onMouseClicked="#minimizza" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fitHeight="20.0" fitWidth="20.0" onMouseClicked="#minimizza" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../immagini/navigazione/minimizza.png" />
                            </image>
@@ -32,7 +32,7 @@
                   </VBox>
                   <VBox id="closeBtn" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="25.0" prefWidth="25.0" styleClass="closeButton">
                      <children>
-                        <ImageView fx:id="chiudi" fitHeight="20.0" fitWidth="20.0" onMouseClicked="#chiudi" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fitHeight="20.0" fitWidth="20.0" onMouseClicked="#chiudi" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../immagini/navigazione/chiudi.png" />
                            </image>

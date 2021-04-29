@@ -17,16 +17,6 @@ public class Salvataggio {
         valori.put(chiave, valori.get(chiave) + 1);
     }
 
-    public void diminuisciValore(String chiave) {
-        valori.putIfAbsent(chiave, 0);
-
-        int nuovoValore = valori.get(chiave) - 1;
-
-        if (nuovoValore >= 0) {
-            valori.put(chiave, nuovoValore);
-        }
-    }
-
     public Map<String, Integer> getValori() {
         return Collections.unmodifiableMap(valori);
     }

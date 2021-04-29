@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -10,29 +11,41 @@
    <children>
       <VBox id="MG" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#mouseClicca" onMouseEntered="#mouseSopra" onMouseExited="#mouseRilascia" prefHeight="145.0" prefWidth="145.0" styleClass="primaryDarkBackground">
          <children>
-            <ImageView fitHeight="65.0" fitWidth="65.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="87.0" fitWidth="94.0">
                <image>
-                  <Image url="@../immagini/mygames.png" />
+                  <Image url="@../immagini/persona_Icona.png" />
                </image>
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin>
             </ImageView>
-            <Label text="I MIEI GIOCHI" textFill="#afb2af">
+            <Label text="Profilo" textFill="#afb2af">
                <font>
                   <Font name="Berlin Sans FB" size="14.0" />
                </font>
+               <padding>
+                  <Insets top="10.0" />
+               </padding>
             </Label>
          </children>
+         <VBox.margin>
+            <Insets bottom="10.0" />
+         </VBox.margin>
       </VBox>
       <VBox id="GL" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#mouseClicca" onMouseEntered="#mouseSopra" onMouseExited="#mouseRilascia" prefHeight="145.0" prefWidth="145.0" styleClass="primaryDarkBackground">
          <children>
-            <ImageView fitHeight="65.0" fitWidth="65.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="59.0" fitWidth="89.0">
                <image>
-                  <Image url="@../immagini/impostazioni_icona.png" />
+                  <Image url="@../immagini/giochi.png" />
                </image>
             </ImageView>
-            <Label text="IMPOSTAZIONI" textFill="#afb2af">
+            <Label text="Libreria" textFill="#afb2af">
                <font>
                   <Font name="Berlin Sans FB" size="14.0" />
                </font>
+               <padding>
+                  <Insets top="10.0" />
+               </padding>
             </Label>
          </children>
       </VBox>
